@@ -55,26 +55,27 @@ Inspired by classic Unix monitors (`htop`, `btop`, `ctop`), `etop` audits your e
 
 ## 🚀 Installation
 
-### Prerequisites
-- macOS 12.0 (Monterey) or later (Apple Silicon & Intel supported)
-- [Rust](https://rustup.rs/) (1.75.0 or later)
-
-### Build & Install from Source
+### Option 1: Homebrew (Recommended)
 ```bash
-# Clone repository
-git clone https://github.com/vikks/etop.git
-cd etop
-
-# Compile highly-optimized release binary (LTO + stripped)
-cargo build --release
-
-# Install binary to ~/.cargo/bin (ensure it is in your $PATH)
-cargo install --path .
+brew install vikks/tap/etop
 ```
 
-Verify installation:
+### Option 2: One-Line Universal Installer (Pre-compiled Binary)
 ```bash
-etop --version
+curl -fsSL https://raw.githubusercontent.com/vikks/etop/main/install.sh | sh
+```
+
+### Option 3: Install via Cargo
+```bash
+cargo install --git https://github.com/vikks/etop.git
+```
+
+### Option 4: Build from Source
+```bash
+git clone https://github.com/vikks/etop.git
+cd etop
+cargo build --release
+cargo install --path .
 ```
 
 ---
