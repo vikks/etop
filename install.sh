@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # =============================================================================
-# etop: One-Line Universal Installer for macOS
+# etop: One-Line Universal Installer & Uninstaller for macOS
 # Repository: https://github.com/vikks/etop
-# Usage: curl -fsSL https://raw.githubusercontent.com/vikks/etop/main/install.sh | sh
+# Usage (Install):   curl -fsSL https://raw.githubusercontent.com/vikks/etop/main/install.sh | sh
+# Usage (Uninstall): curl -fsSL https://raw.githubusercontent.com/vikks/etop/main/install.sh | sh -s -- --uninstall
 # =============================================================================
 
 set -euo pipefail
@@ -10,6 +11,7 @@ set -euo pipefail
 REPO="vikks/etop"
 BIN_NAME="etop"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/bin}"
+DATA_DIR="${DATA_DIR:-$HOME/.local/share/etop}"
 
 # Colors
 CYAN='\033[0;36m'
@@ -18,6 +20,52 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+# -----------------------------------------------------------------------------
+# UNINSTALL MODE
+# -----------------------------------------------------------------------------
+if [[ "${1:-}" =~ ^(--uninstall|-u|uninstall)$ ]]; then
+    printf "${CYAN}🗑️  Uninstalling etop...${NC}\n"
+
+    REMOVED=0
+
+    # 1. Remove binary from INSTALL_DIR
+    if [ -f "${INSTALL_DIR}/${BIN_NAME}" ]; then
+        rm -f "${INSTALL_DIR}/${BIN_NAME}"
+        printf "${GREEN}✓ Removed binary:${NC} ${INSTALL_DIR}/${BIN_NAME}\n"
+        REMOVED=1
+    fi
+
+    # Check alternative paths (/usr/local/bin, /opt/homebrew/bin)
+    if [ -f "/usr/local/bin/${BIN_NAME}" ]; then
+        rm -f "/usr/local/bin/${BIN_NAME}"
+        printf "${GREEN}✓ Removed binary:${NC} /usr/local/bin/${BIN_NAME}\n"
+        REMOVED=1
+    fi
+
+    # 2. Check for optional --purge flag to remove data directory
+    if [[ "${2:-}" == "--purge" ]]; then
+        if [ -d "$DATA_DIR" ]; then
+            rm -rf "$DATA_DIR"
+            printf "${GREEN}✓ Purged tombstone history data:${NC} ${DATA_DIR}\n"
+        fi
+    else
+        if [ -d "$DATA_DIR" ]; then
+            printf "${YELLOW}ℹ️  Preserved tombstone history archive at:${NC} ${DATA_DIR}\n"
+            printf "   (Pass '--purge' to delete history data as well: 'install.sh --uninstall --purge')\n"
+        fi
+    fi
+
+    if [ "$REMOVED" -eq 1 ]; then
+        printf "\n${GREEN}✓ etop has been successfully uninstalled.${NC}\n"
+    else
+        printf "${YELLOW}⚠️  No etop binary was found in ${INSTALL_DIR}.${NC}\n"
+    fi
+    exit 0
+fi
+
+# -----------------------------------------------------------------------------
+# INSTALL MODE
+# -----------------------------------------------------------------------------
 printf "${CYAN}⚡ Installing etop (Deterministic macOS Developer Ecosystem & Package Top)...${NC}\n"
 
 # 1. Detect OS (macOS only)
