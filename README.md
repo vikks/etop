@@ -40,8 +40,6 @@ Inspired by classic Unix monitors (`htop`, `btop`, `ctop`), `etop` audits your e
   - 🍎 **macOS Applications** (`/Applications` + `mdls` access timestamps)
   - 🧹 **Compiler Build Caches** (Cargo, Go, UV, Bundler, Homebrew)
   - 🐳 **Docker Dangling Images & Container Layers**
-- **Objective Systems Topology**:
-  Eliminates arbitrary 0–100 tier scores in favor of factual dependency graph resolution (`TopLevel`, `Orphan`, `Dependency { required_by_count }`, `BuildCache`, `ActiveRuntime`).
 - **Filesystem & Artifact Archaeology**:
   Dynamically locates all associated configuration files, application support state, log files, caches, and active toolchain environment variables for any installed tool.
 - **Configuration & Environment Preservation Invariant**:
@@ -89,31 +87,6 @@ etop
 # or
 etop tui
 ```
-
-```
-┌─ ⚡ etop ──────────────────────────────────────────────────────────────────────────────────────────┐
-│ [f] Filter  [s] Sort  [m] Mark  [h] History  [/] Search  [Space] Toggle  [x] Export  [?] Help  [q] Quit │
-└────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### ⌨️ TUI Keyboard Controls
-
-| Key | Mode / Action | Description |
-| :--- | :--- | :--- |
-| **`j` / `k`** or **`↑` / `↓`** | Navigation | Move cursor up / down through package rows |
-| **`PageUp` / `PageDown`** | Navigation | Scroll through package rows in 10-item increments |
-| **`Space`** | Marking | Toggle single package selection checkbox `[✓]` |
-| **`f`** | **Filter Menu** | Open modal drawer to toggle filters (`[o]` Orphans, `[c]` Caches, `[t]` Top-Level, `[i]` Inactivity, `[e]` Ecosystems, `[d]` Domains) |
-| **`s`** | **Sort Menu** | Open sort drawer (`[1]` Size, `[2]` Name, `[3]` Inactivity, `[4]` Source, `[5]` Category) |
-| **`m`** | **Mark Menu** | Open batch marking drawer (`[a]` All Visible, `[o]` Orphans, `[c]` Caches, `[x]` Clear) |
-| **`h`** | **History View** | Open forensic tombstone drawer to browse past uninstalled packages & preserved configs |
-| **`/`** | **Search** | Real-time substring search by package name, ID, category, or source |
-| **`x`** or **`Enter`** | **Export** | Generate deterministic `cleanup_*.sh`, `rollback_reinstall_*.sh`, and `cleanup_manifest_*.json` |
-| **`a`** | Reset | Clear all active filters and reset search query |
-| **`?`** | Help | Toggle modal keyboard reference overlay |
-| **`q`** or **`Esc`** | Exit | Close open sub-menu / modal, or quit `etop` |
-
----
 
 ## 💻 CLI Subcommand Reference
 
@@ -240,8 +213,4 @@ We welcome contributions from systems programmers, toolsmiths, and developers ac
 
 ## 📜 License
 
-Licensed under either of:
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
 - MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
-
-at your option.
