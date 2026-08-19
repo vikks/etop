@@ -1,0 +1,29 @@
+[categories]
+"Languages & Runtimes" = [
+    "ruby", "rust", "go", "python", "node", "bun", "deno",
+    "elixir", "erlang", "java", "zig", "lua", "php", "scala"
+]
+"Databases & Storage" = [
+    "postgresql", "postgres", "redis", "mysql", "sqlite",
+    "mongodb", "clickhouse", "elasticsearch", "valkey", "memcached"
+]
+"CLI Developer Tools" = [
+    "ripgrep", "fd", "bat", "fzf", "jq", "gh", "git-delta",
+    "tmux", "neovim", "eza", "zellij", "starship", "lazygit", "htop", "btop"
+]
+"Infrastructure & Cloud" = [
+    "docker", "podman", "kubernetes", "kubectl", "helm",
+    "terraform", "awscli", "google-cloud-sdk", "azure-cli", "minikube"
+]
+"Build & Package Managers" = [
+    "mise", "asdf", "cargo", "brew", "uv", "pipx",
+    "yarn", "pnpm", "cmake", "ninja", "stow", "make"
+]
+"GUI Apps & Media" = [
+    "slack", "discord", "spotify", "vlc", "visual-studio-code",
+    "ghostty", "iterm2", "cursor", "raycast", "alacritty", "obsidian"
+]
+"Build Artifacts & Caches" = [
+    "cargo-cache", "go-modcache", "pip-cache", "brew-cache",
+    "docker-dangling", "yarn-cache", "npm-cache", "gem-cache"
+]

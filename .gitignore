@@ -1,0 +1,17 @@
+/target
+**/*.rs.bk
+*.log
+.DS_Store
+
+# User ignored files
+AGENTS.md
+agents.md
+guide/
+guides/
+learning/
+
+# Generated scripts & manifests
+cleanup_*.sh
+rollback_reinstall_*.sh
+cleanup_manifest_*.json
+tmp_test/
