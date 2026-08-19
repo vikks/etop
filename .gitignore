@@ -9,6 +9,7 @@ agents.md
 guide/
 guides/
 learning/
+.agents/
 
 # Generated scripts & manifests
 cleanup_*.sh
