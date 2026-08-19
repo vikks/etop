@@ -80,6 +80,21 @@ cargo install --path .
 
 ---
 
+## 🗑️ Uninstallation
+
+### Via Homebrew:
+```bash
+brew uninstall etop
+```
+
+### Via Script:
+```bash
+curl -fsSL https://raw.githubusercontent.com/vikks/etop/main/uninstall.sh | sh
+```
+*(To also purge tombstone history data from `~/.local/share/etop/`, pass `--purge`: `curl -fsSL .../uninstall.sh | sh -s -- --purge`)*
+
+---
+
 ## 🎮 Interactive TUI Dashboard
 
 Launch the fullscreen immediate-mode TUI:
