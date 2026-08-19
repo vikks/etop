@@ -57,7 +57,8 @@ Inspired by classic Unix monitors (`htop`, `btop`, `ctop`), `etop` audits your e
 
 ### Option 1: Homebrew (Recommended)
 ```bash
-brew install vikks/tap/etop
+brew tap vikks/tap
+brew install etop
 ```
 
 ### Option 2: One-Line Universal Installer (Pre-compiled Binary)
